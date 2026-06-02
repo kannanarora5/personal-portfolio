@@ -6,7 +6,7 @@ export default function ReadmePanel({ onSwitch }) {
     <div className={styles.readmePanel}>
       <div className={styles.status}>
         <span className={styles.statusDot}></span>
-        STATUS: OPEN_TO_GRAD_ROLES · JUL 2026
+        STATUS: OPEN_TO_GRAD_AND_INTERNSHIP_ROLES · JUL 2026
       </div>
 
       <h1 className={styles.h1}>
