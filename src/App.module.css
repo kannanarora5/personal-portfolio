@@ -28,3 +28,9 @@
   flex: 1;
   overflow-y: auto;
 }
+
+@media (max-width: 720px) {
+  .workspace { flex-direction: column; }
+  .editorArea { width: 100%; }
+  .breadcrumb { padding: 0 12px; height: 28px; font-size: 12px; }
+}

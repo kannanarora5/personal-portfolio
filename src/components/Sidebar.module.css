@@ -7,6 +7,40 @@
   flex-shrink: 0;
   overflow: hidden;
 }
+
+/* On small screens the sidebar is hidden by default; when the .open class is present it will show */
+@media (max-width: 720px) {
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar.open {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 48px;
+    height: calc(100% - 48px);
+    z-index: 40;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.open {
+  display: flex;
+}
+
+.collapsed .fileList {
+  display: none;
+}
+
+.collapsed .chevron {
+  transform: rotate(-90deg);
+}
+
 .header {
   height: 35px;
   display: flex;
@@ -20,6 +54,7 @@
   color: var(--text-dim);
   flex-shrink: 0;
 }
+
 .section {
   display: flex;
   align-items: center;
@@ -29,7 +64,11 @@
   transition: background .1s;
   user-select: none;
 }
-.section:hover { background: var(--bg-hover); }
+
+.section:hover {
+  background: var(--bg-hover);
+}
+
 .chevron {
   font-size: 10px;
   color: var(--text-dim);
@@ -37,6 +76,7 @@
   text-align: center;
   flex-shrink: 0;
 }
+
 .sectionName {
   font-size: 11px;
   font-weight: 700;
@@ -44,7 +84,9 @@
   text-transform: uppercase;
   color: var(--text-dim);
 }
+
 .fileList {}
+
 .fileItem {
   display: flex;
   align-items: center;
@@ -54,11 +96,16 @@
   transition: background .1s;
   border-left: 2px solid transparent;
 }
-.fileItem:hover { background: var(--bg-hover); }
+
+.fileItem:hover {
+  background: var(--bg-hover);
+}
+
 .fileItem.active {
   background: var(--bg-selected);
   border-left-color: var(--accent);
 }
+
 .fileIcon {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -67,6 +114,7 @@
   text-align: center;
   flex-shrink: 0;
 }
+
 .fileName {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -75,12 +123,17 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.fileItem.active .fileName { color: var(--text-white); }
+
+.fileItem.active .fileName {
+  color: var(--text-white);
+}
+
 .gitSection {
   padding: 8px 12px;
   border-top: 1px solid var(--border);
   margin-top: auto;
 }
+
 .gitBranch {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -89,6 +142,7 @@
   align-items: center;
   gap: 6px;
 }
+
 .gitDot {
   width: 7px;
   height: 7px;

@@ -594,8 +594,17 @@
 
 
 /* ── RESPONSIVE ── */
-@media(max-width:768px){
-  .readmePanel { padding: 32px 24px; }
-  .aboutPanel, .projectsPanel, .skillsPanel, .contactPanel { padding: 28px 20px; }
-  .aboutGrid, .projectBodyInner { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  .readmePanel { padding: 32px 20px; }
+  .aboutPanel, .projectsPanel, .skillsPanel, .contactPanel { padding: 20px; }
+  .aboutGrid, .projectBodyInner { grid-template-columns: 1fr; gap: 24px; }
+  .readmePanel .h1 { font-size: clamp(28px, 8vw, 44px); }
+  .constBlock, .jsonView, .shBlock { max-width: 100%; padding: 14px; }
+  .projDetailList { padding-left: 12px; }
+  .mlLabel { display: none; }
+  .timeline .tlItem { padding: 12px 0; }
+  .btns { gap: 8px; }
+  .profileCard { flex-direction: column; align-items: flex-start; }
+  .profilePhotoWrapper { width: 84px; height: 84px; }
+  .profileName { font-size: 18px; }
 }

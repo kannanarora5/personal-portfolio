@@ -17,6 +17,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('readme')
   const [openTabs, setOpenTabs] = useState(['readme', 'about', 'projects', 'skills', 'contact'])
   const [cmdOpen, setCmdOpen] = useState(false)
+  const [sidebarVisible, setSidebarVisible] = useState(true)
 
   function switchTab(id) {
     if (!openTabs.includes(id)) setOpenTabs(prev => [...prev, id])
@@ -56,8 +57,8 @@ export default function App() {
       <TitleBar />
 
       <div className={styles.workspace}>
-        <ActivityBar />
-        <Sidebar activeTab={activeTab} onSwitch={switchTab} />
+        <ActivityBar onToggle={() => setSidebarVisible(v => !v)} sidebarVisible={sidebarVisible} />
+        <Sidebar activeTab={activeTab} onSwitch={switchTab} visible={sidebarVisible} />
 
         <div className={styles.editorArea}>
           <TabBar activeTab={activeTab} onSwitch={switchTab} openTabs={openTabs} onClose={closeTab} />
