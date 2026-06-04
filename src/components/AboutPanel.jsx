@@ -1,89 +1,6 @@
 import React, { useState } from 'react'
 import styles from './panels.module.css'
-
-const COMMITS = [
-  {
-    hash: 'a3f9c2e',
-    date: 'Jul 2026',
-    type: 'feat',
-    message: 'final-year CS (Professional) student seeking internship & graduate opportunities',
-    body: 'Final-year Computer Science (Professional) student. Open to SWE, ML/AI, and Cloud Engineering roles in Melbourne or remote.',
-    tag: 'milestone',
-    tagColor: '#9ece6a',
-  },
-  {
-    hash: 'b71d4a1',
-    date: '2025',
-    type: 'feat',
-    message: 'shipped Stridey iOS app @ Apple Foundation Program (1 of 35 / 530+ applicants)',
-    body: 'Selected for one of Apple\'s most competitive student programs at RMIT. Built Stridey, an iOS app helping young adults reconnect with nature and ease climate burnout. Contributed SwiftUI screens, code integration, UX design, and the final pitch.',
-    tag: 'apple',
-    tagColor: '#bb9af7',
-  },
-  {
-    hash: 'b93e1d4',
-    date: '2025',
-    type: 'feat',
-    message: 'became Peer Mentor @ RMIT University',
-    body: 'Supporting 20+ students through their academic journey while mentoring Java and C++ coursework. Strengthened leadership, communication, and problem-solving skills through one-on-one guidance and group sessions.',
-    tag: 'leadership',
-    tagColor: '#73daca',
-  },
-  {
-    hash: 'c29f813',
-    date: '2025',
-    type: 'feat',
-    message: 'deployed cloud-based music platform on AWS',
-    body: 'Designed and implemented a scalable music subscription platform using EC2, S3, Lambda, DynamoDB, and API Gateway. Gained hands-on experience with cloud architecture, backend automation, and infrastructure deployment.',
-    tag: 'cloud',
-    tagColor: '#7dcfff',
-  },
-  {
-    hash: 'd84c6b2',
-    date: '2024',
-    type: 'feat',
-    message: 'built machine learning pipeline for colon cancer cell classification',
-    body: 'Designed and evaluated supervised learning models for biomedical image classification using Python, NumPy, pandas, and scikit-learn. Automated model training, testing, and performance analysis workflows.',
-    tag: 'ml',
-    tagColor: '#e0af68',
-  },
-  {
-    hash: 'e15a9d7',
-    date: '2024',
-    type: 'feat',
-    message: 'shipped EventHub: full-stack campus platform in Scrum team',
-    body: 'RESTful Spring Boot backend, MySQL schema, Docker, GitHub Actions CI/CD, and full UAT cycles with a real product owner.',
-    tag: 'backend',
-    tagColor: '#f14c4c',
-  },
-  {
-    hash: 'f03b2c9',
-    date: '2024',
-    type: 'chore',
-    message: 'joined FIRE+ committee @ RMIT, content reaching 1,000+ students',
-    body: null,
-    tag: 'extracurricular',
-    tagColor: '#bac730',
-  },
-  {
-    hash: '912e5f4',
-    date: '2023',
-    type: 'init',
-    message: 'started CS (Professional) @ RMIT University Melbourne',
-    body: 'Built a strong foundation through coursework while actively participating in hackathons, student societies, networking events, and peer mentoring programs that strengthened both technical and leadership skills.',
-    tag: 'origin',
-    tagColor: '#7aa2f7',
-  },
-  {
-    hash: '8f4a7b1',
-    date: '2020',
-    type: 'feat',
-    message: 'represented Unison World School on the global stage',
-    body: 'Participated in the World Scholar’s Cup global rounds, completed an international exchange program at Kilgraston School in Scotland, and achieved a High Distinction in Grade 1 Rock & Pop Keyboard.',
-    tag: 'school',
-    tagColor: '#bb9af7',
-  },
-]
+import { TIMELINE, ABOUT_CURIOSITIES, CAREER_LOG } from '../data.js'
 
 const TYPE_COLORS = {
   feat:  '#9ece6a',
@@ -99,67 +16,99 @@ export default function AboutPanel() {
     <div className={styles.aboutPanel}>
       <div className={styles.panelTitle}>about.ts</div>
 
-      {/* Profile card */}
-      <div className={styles.profileCard}>
-        <div className={styles.profilePhotoWrapper}>
-          <img src="/avatar.png" alt="Kannan Arora" className={styles.profilePhoto} />
-        </div>
-        <div className={styles.profileInfo}>
-          <div className={styles.profileName}>Kannan Arora</div>
-          <div className={styles.profileRole}>Software Developer · Full-stack developer· Cloud · AI/ML</div>
-          <div className={styles.profileMeta}>
-            <span className={styles.profileMetaItem}> RMIT University, Melbourne</span>
-            <span className={styles.profileMetaItem}> Graduating Jul 2026</span>
-            <span className={styles.profileMetaItem}> Melbourne · Open to remote</span>
-          </div>
-          <div className={styles.profileAvail}>
-            <span className={styles.profileAvailDot} />
-            Available for internship & grad roles
-          </div>
-        </div>
-      </div>
+      <p className={styles.aboutPitch}>
+        Beyond the repos in <strong>projects.tsx</strong>, this page is where I keep roles,
+        timelines, and the kinds of problems I naturally drift toward — less elevator pitch,
+        more context.
+      </p>
 
-      {/* Git log */}
-      <div className={styles.gitLog}>
-        <div className={styles.gitLogHeader}>
-          <span className={styles.gitLogCmd}>$ git log --oneline --all</span>
-          <span className={styles.gitLogBranch}>branch: main · kannan-arora</span>
-        </div>
+      <section className={styles.aboutBlock}>
+        <h2 className={styles.aboutBlockTitle}>What I gravitate toward</h2>
+        <ul className={styles.aboutCuriosityList}>
+          {ABOUT_CURIOSITIES.map((item) => (
+            <li key={item.topic} className={styles.aboutCuriosityItem}>
+              <span className={styles.aboutCuriosityTopic}>{item.topic}</span>
+              <p className={styles.aboutCuriosityNote}>{item.note}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-        {COMMITS.map((commit, i) => (
-          <div
-            key={commit.hash}
-            className={`${styles.commitRow} ${expanded === i ? styles.commitExpanded : ''}`}
-            onClick={() => setExpanded(expanded === i ? null : i)}
-          >
-            <div className={styles.commitMain}>
-              <span className={styles.commitHash}>{commit.hash}</span>
-              <span className={styles.commitDate}>{commit.date}</span>
-              <span className={styles.commitType} style={{ color: TYPE_COLORS[commit.type] }}>
-                {commit.type}:
-              </span>
-              <span className={styles.commitMsg}>{commit.message}</span>
-              {commit.tag && (
-                <span className={styles.commitTag} style={{ borderColor: commit.tagColor, color: commit.tagColor }}>
-                  {commit.tag}
-                </span>
-              )}
-              <span className={styles.commitChevron}>{expanded === i ? '▾' : '▸'}</span>
-            </div>
-
-            {expanded === i && commit.body && (
-              <div className={styles.commitBody}>
-                <span className={styles.commitBodyBar} />
-                <p>{commit.body}</p>
+      <section className={styles.aboutBlock}>
+        <h2 className={styles.aboutBlockTitle}>Experience</h2>
+        <div className={styles.timeline}>
+          {TIMELINE.map((item, i) => (
+            <div key={i} className={styles.tlItem}>
+              <div className={styles.tlDotCol}>
+                <div className={styles.tlDot} />
+                {item.hasLine && <div className={styles.tlLine} />}
               </div>
-            )}
-          </div>
-        ))}
-
-        <div className={styles.gitLogFooter}>
-          <span className={styles.gitLogCmd}>$ _</span>
+              <div className={styles.tlBody}>
+                <div className={styles.tlTitle}>{item.title}</div>
+                <div className={styles.tlOrg}>{item.org}</div>
+                <div className={styles.tlDesc}>{item.desc}</div>
+              </div>
+              <div className={styles.tlDate}>{item.date}</div>
+            </div>
+          ))}
         </div>
-      </div>
+      </section>
+
+      <section className={styles.aboutBlock}>
+        <div className={styles.aboutBlockHead}>
+          <h2 className={styles.aboutBlockTitle}>Career timeline</h2>
+          <span className={styles.aboutBlockHint}>Roles & milestones — click for detail</span>
+        </div>
+
+        <div className={styles.gitLog}>
+          <div className={styles.gitLogHeader}>
+            <span className={styles.gitLogCmd}>git log --oneline</span>
+            <span className={styles.gitLogBranch}>life@rmit</span>
+          </div>
+
+          {CAREER_LOG.map((commit, i) => (
+            <div
+              key={commit.hash}
+              className={`${styles.commitRow} ${expanded === i ? styles.commitExpanded : ''}`}
+              onClick={() => setExpanded(expanded === i ? null : i)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setExpanded(expanded === i ? null : i)
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
+              <div className={styles.commitMain}>
+                <span className={styles.commitDate}>{commit.date}</span>
+                <span
+                  className={styles.commitType}
+                  style={{ color: TYPE_COLORS[commit.type] }}
+                >
+                  {commit.type}
+                </span>
+                <span className={styles.commitMsg}>{commit.message}</span>
+                {commit.tag && (
+                  <span
+                    className={styles.commitTag}
+                    style={{ borderColor: commit.tagColor, color: commit.tagColor }}
+                  >
+                    {commit.tag}
+                  </span>
+                )}
+                <span className={styles.commitChevron}>{expanded === i ? '▾' : '▸'}</span>
+              </div>
+
+              {expanded === i && commit.body && (
+                <div className={styles.commitBody}>
+                  <p>{commit.body}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   )
 }

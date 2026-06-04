@@ -39,10 +39,12 @@ export default function SkillsPanel() {
 {'    '}<S>UAT</S><Comma /> <S>Code Review</S><Comma /> <S>Documentation</S>{'\n'}
 {'  '}<Brace>]</Brace><Comma />{'\n'}
 {'\n'}
-{'  '}<K>currently_learning</K><Brace>: [</Brace><S>TypeScript</S><Comma /> <S>System Design</S><Brace>]</Brace><Comma />{'\n'}
+{'  '}<K>interests</K><Brace>: [</Brace><S>Applied ML</S><Comma /> <S>NLP & networks</S><Comma /> <S>Cloud backends</S><Comma /> <S>Game dev</S><Brace>]</Brace><Comma />{'\n'}
+{'\n'}
+{'  '}<K>currently_learning</K><Brace>: [</Brace><S>TypeScript</S><Comma /> <S>System Design</S><Comma /> <S>TensorFlow</S><Brace>]</Brace><Comma />{'\n'}
 {'\n'}
 {'  '}<K>available</K><Brace>: </Brace><Bool v="true" /><Comma />{'\n'}
-{'  '}<K>open_to</K><Brace>: [</Brace><S>SWE</S><Comma /> <S>ML/AI</S><Comma /> <S>Cloud Engineering</S><Brace>]</Brace>{'\n'}
+{'  '}<K>open_to</K><Brace>: [</Brace><S>SWE</S><Comma /> <S>ML/AI</S><Comma /> <S>Cloud</S><Comma /> <S>Data</S><Brace>]</Brace>{'\n'}
 <Brace>{'}'}</Brace>
       </div>
     </div>
