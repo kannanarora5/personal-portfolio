@@ -6,34 +6,28 @@ export default function ReadmePanel({ onSwitch }) {
     <div className={styles.readmePanel}>
       <div className={styles.status}>
         <span className={styles.statusDot}></span>
-        STATUS: OPEN_TO_GRAD_AND_INTERNSHIP_ROLES · JUL 2026
+        open to grad & internship roles · jul 2026
       </div>
 
       <h1 className={styles.h1}>
-        Curiosity got me into<br />
-        Computer Science.<br />
-        <span className={styles.hlTeal}>Building</span> keeps me there.
+        Kannan Arora.
       </h1>
 
-      <p className={styles.readmeQuestion}>
-        Most of my projects start the same way: stumbling across something interesting and refusing to stop until I understand how it works.
+      <p className={styles.sub}>
+        Software developer · full-stack, cloud, ML · RMIT Melbourne
+      </p>
+
+      <p className={styles.sub} style={{ marginTop: '-20px' }}>
+        I'm genuinely curious, and that's mostly why I'm here. Most of the projects in this portfolio started the same way, I found something interesting and couldn't leave it alone until I understood how it worked. The technologies change. That part doesn't.
       </p>
 
       <div className={styles.btns}>
-        <button className={styles.btnPrimary} onClick={() => onSwitch('projects')}>View Projects</button>
-        <button className={styles.btnGhost} onClick={() => onSwitch('contact')}>Get in touch</button>
-      </div>
-
-      <div className={styles.constBlock}>
-        <span style={{color:'var(--blue2)'}}>const</span> <span style={{color:'var(--param)'}}>kannan</span> <span style={{color:'var(--text-dim)'}}>= {'{'}</span>{'\n'}
-        {'  '}<span style={{color:'var(--param)'}}>name</span><span style={{color:'var(--text-dim)'}}>:</span>         <span style={{color:'var(--orange)'}}>{"\"Kannan Arora\""}</span><span style={{color:'var(--text-dim)'}}>,</span>{'\n'}
-        {'  '}<span style={{color:'var(--param)'}}>university</span><span style={{color:'var(--text-dim)'}}>:</span>    <span style={{color:'var(--orange)'}}>{"\"RMIT Melbourne\""}</span><span style={{color:'var(--text-dim)'}}>,</span>{'\n'}
-        {'  '}<span style={{color:'var(--param)'}}>graduating</span><span style={{color:'var(--text-dim)'}}>:</span>    <span style={{color:'var(--orange)'}}>{"\"July 2026\""}</span><span style={{color:'var(--text-dim)'}}>,</span>{'\n'}
-        {'  '}<span style={{color:'var(--param)'}}>curiosity</span><span style={{color:'var(--text-dim)'}}>:</span>     <span style={{color:'var(--orange)'}}>{"\"high\""}</span><span style={{color:'var(--text-dim)'}}>,</span>{'\n'}
-        {'  '}<span style={{color:'var(--param)'}}>ideas</span><span style={{color:'var(--text-dim)'}}>:</span>         <span style={{color:'var(--orange)'}}>{"\"too many\""}</span><span style={{color:'var(--text-dim)'}}>,</ span>{'\n'}
-        {'  '}<span style={{color:'var(--param)'}}>comfortZone</span><span style={{color:'var(--text-dim)'}}>:</ span>   <span style={{color:'var(--orange)'}}>{"\"constantly expanding\""}</ span><span style={{color:'var(--text-dim)'}}>,</ span>{'\n'}
-        {'  '}<span style={{color:'var(--param)'}}>available</ span><span style={{color:'var(--text-dim)'}}>:</ span>     <span style={{color:'var(--blue2)'}}>true</ span><span style={{color:'var(--text-dim)'}}>,</ span>{'\n'}
-      < span style={{color:'var(--text-dim)'}}>{'}'}</ span>
+        <button className={styles.btnPrimary} onClick={() => onSwitch('projects')}>
+          see what I've built
+        </button>
+        <button className={styles.btnGhost} onClick={() => onSwitch('contact')}>
+          get in touch
+        </button>
       </div>
     </div>
   )

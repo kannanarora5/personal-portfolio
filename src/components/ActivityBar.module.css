@@ -1,6 +1,6 @@
 .activitybar {
   width: 48px;
-  background: #333333;
+  background: #111113;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +30,7 @@
   left: -8px;
   width: 2px;
   height: 24px;
-  background: var(--text-bright);
+  background: var(--accent);
   border-radius: 1px;
 }
 .settings { margin-top: auto; }

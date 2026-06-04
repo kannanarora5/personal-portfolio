@@ -1,9 +1,9 @@
 export const FILES = [
-  { id: 'readme',   name: 'README.md',    icon: 'M',  color: '#519aba', hint: 'Home' },
-  { id: 'about',    name: 'about.ts',     icon: 'TS', color: '#4ec9b0', hint: 'About' },
-  { id: 'projects', name: 'projects.tsx', icon: 'TX', color: '#f0c674', hint: 'Projects' },
-  { id: 'skills',   name: 'stack.json',   icon: '{}', color: '#89d185', hint: 'Skills' },
-  { id: 'contact',  name: 'contact.sh',   icon: 'SH', color: '#e8bd80', hint: 'Contact' },
+  { id: 'readme',   name: 'README.md',    icon: 'M',  color: '#67e8f9', hint: 'Home' },
+  { id: 'about',    name: 'about.ts',     icon: 'TS', color: '#93c5fd', hint: 'About' },
+  { id: 'projects', name: 'projects.tsx', icon: 'TX', color: '#fcd34d', hint: 'Projects' },
+  { id: 'skills',   name: 'stack.json',   icon: '{}', color: '#86efac', hint: 'Skills' },
+  { id: 'contact',  name: 'contact.sh',   icon: 'SH', color: '#fca5a5', hint: 'Contact' },
 ]
 
 export const PROJECTS = [

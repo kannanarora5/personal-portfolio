@@ -1,12 +1,12 @@
 .titlebar {
   height: 30px;
-  background: #323233;
+  background: #111113;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   position: relative;
-  border-bottom: 1px solid #252526;
+  border-bottom: 1px solid var(--border);
 }
 .dots {
   position: absolute;
