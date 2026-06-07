@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './panels.module.css'
-import { FILES, README_FOCUS } from '../data.js'
+import { FILES } from '../data.js'
 
 const NAV = FILES.filter((f) => f.id !== 'readme')
 
@@ -21,35 +21,22 @@ export default function ReadmePanel({ onSwitch }) {
           <div className={styles.readmeHeroText}>
             <div className={styles.status}>
               <span className={styles.statusDot} />
-              Available for internship & grad roles · Jul 2026
+              Open to internship & grad roles
             </div>
             <h1 className={styles.h1}>
               Kannan Arora<span className={styles.readmeDot}>.</span>
             </h1>
             <p className={styles.readmeRole}>
-              CS (Professional) · RMIT Melbourne
+              CS (Professional) · <strong>RMIT Melbourne</strong>
             </p>
             <p className={styles.readmePitch}>
-              I build across <strong>ML, cloud backends, and data-heavy products</strong> — and
-              pick up new stacks when a problem needs them. Repos are in{' '}
-              <strong>projects.tsx</strong>; background and roles are in{' '}
-              <strong>about.ts</strong>.
+              Most days you&apos;ll find me writing code, testing ideas, or getting distracted
+              by an interesting technical problem. Strong interest in software, AI, and
+              building things that are fun, useful, or ideally both.
             </p>
           </div>
         </div>
       </header>
-
-      <div className={styles.readmeFocusBlock}>
-        <span className={styles.readmeFocusLabel}>Current focus</span>
-        <ul className={styles.readmeFocusList}>
-          {README_FOCUS.map((item) => (
-            <li key={item.label} className={styles.readmeFocusItem}>
-              <span className={styles.readmeFocusTag}>{item.label}</span>
-              <span className={styles.readmeFocusText}>{item.detail}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
 
       <div className={styles.readmeCtaRow}>
         <button
@@ -74,11 +61,6 @@ export default function ReadmePanel({ onSwitch }) {
           Contact me
         </button>
       </div>
-
-      <blockquote className={styles.readmeQuote}>
-        I learn by building — when something catches my attention, I follow it until I can
-        explain how it works, then ship something real.
-      </blockquote>
 
       <section className={styles.readmeSection}>
         <h2 className={styles.readmeSectionTitle}>Explore portfolio</h2>

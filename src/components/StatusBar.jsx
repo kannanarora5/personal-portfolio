@@ -7,7 +7,7 @@ export default function StatusBar({ onSwitch }) {
       <div className={styles.item}>⑂ main</div>
       <div className={styles.item}>● 0 errors, 0 warnings</div>
       <div className={styles.right}>
-        <div className={styles.item}>AVAILABLE_JUL_2026</div>
+        <div className={styles.item}>OPEN_TO_ROLES</div>
         <div className={styles.item}>MELBOURNE · AEST</div>
         <div className={styles.item}>UTF-8</div>
         <div

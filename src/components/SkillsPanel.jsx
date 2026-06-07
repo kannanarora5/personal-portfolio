@@ -39,7 +39,7 @@ export default function SkillsPanel() {
 {'    '}<S>UAT</S><Comma /> <S>Code Review</S><Comma /> <S>Documentation</S>{'\n'}
 {'  '}<Brace>]</Brace><Comma />{'\n'}
 {'\n'}
-{'  '}<K>interests</K><Brace>: [</Brace><S>Applied ML</S><Comma /> <S>NLP & networks</S><Comma /> <S>Cloud backends</S><Comma /> <S>Game dev</S><Brace>]</Brace><Comma />{'\n'}
+{'  '}<K>interests</K><Brace>: [</Brace><S>AI/ML</S><Comma /> <S>Software dev</S><Comma /> <S>Game dev</S><Comma /> <S>Cloud & systems</S><Brace>]</Brace><Comma />{'\n'}
 {'\n'}
 {'  '}<K>currently_learning</K><Brace>: [</Brace><S>TypeScript</S><Comma /> <S>System Design</S><Comma /> <S>TensorFlow</S><Brace>]</Brace><Comma />{'\n'}
 {'\n'}

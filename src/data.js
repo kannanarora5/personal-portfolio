@@ -1,36 +1,20 @@
-/** Short focus lines for README — scannable, not repeated on About */
-export const README_FOCUS = [
+/** Personal interests for About, not a mirror of the projects list */
+export const ABOUT_INTERESTS = [
   {
-    label: 'ML & vision',
-    detail: 'Medical imaging CNNs, class imbalance, semi-supervised learning',
+    topic: 'AI & machine learning',
+    note: 'How models learn, generalise, and fail, not just calling APIs. I like understanding the data and whether a result is actually meaningful.',
   },
   {
-    label: 'Cloud & backends',
-    detail: 'Flask on AWS — DynamoDB, Lambda, API Gateway, production debugging',
+    topic: 'Software development',
+    note: 'Building things that hold up: clear structure, honest debugging, and code you can return to months later without dreading it.',
   },
   {
-    label: 'Data & products',
-    detail: 'NLP/sentiment at scale, Power BI, SwiftUI, game prototypes on the side',
-  },
-]
-
-/** Deeper “what I gravitate toward” for About — different format from README */
-export const ABOUT_CURIOSITIES = [
-  {
-    topic: 'Applied machine learning',
-    note: 'End-to-end pipelines where evaluation and data quality matter — e.g. histopathology classification with real clinical trade-offs.',
+    topic: 'Game development',
+    note: 'A long-running side interest: mechanics, feel, and fast iteration. Games teach you feedback loops and player experience in a different way.',
   },
   {
-    topic: 'Language & social data',
-    note: 'Sentiment, topic modelling, and graph analysis on large comment datasets — how platforms shape discourse.',
-  },
-  {
-    topic: 'Shipping on AWS',
-    note: 'Multi-service web apps: auth, search, storage, and tracing issues through CloudWatch when something breaks in prod.',
-  },
-  {
-    topic: 'Interfaces people use',
-    note: 'SwiftUI screens, analytics dashboards, and occasional game-dev experiments when I want something tactile and fast to iterate.',
+    topic: 'Cloud & systems thinking',
+    note: 'How pieces connect end to end: backends, infra, data flow. I enjoy seeing the full path from a user action to what happens underneath.',
   },
 ]
 
@@ -51,7 +35,7 @@ export const WORKSPACE_PROJECTS = [
     statusColor: '#bb9af7',
     githubUrl: 'https://github.com/kannanarora5/Stridey',
     githubLabel: 'github.com/kannanarora5/Stridey',
-    desc: 'iOS app from the Apple Foundation Program — step tracking and nature photo quests to ease climate burnout.',
+    desc: 'iOS app from the Apple Foundation Program: step tracking and nature photo quests to ease climate burnout.',
     tags: ['Swift', 'SwiftUI', 'Xcode', 'UX research'],
     files: [
       {
@@ -124,7 +108,7 @@ export const WORKSPACE_PROJECTS = [
     statusColor: '#e0af68',
     githubUrl: 'https://github.com/kannanarora5/colon-cancer-cell-classfication-ml',
     githubLabel: 'github.com/kannanarora5/colon-cancer-cell-classfication-ml',
-    desc: 'VGG-style CNNs for colon histopathology — binary cancer detection and multi-class cell typing with semi-supervised learning.',
+    desc: 'VGG-style CNNs for colon histopathology: binary cancer detection and multi-class cell typing with semi-supervised learning.',
     tags: ['Python', 'TensorFlow', 'Keras', 'Medical imaging'],
     files: [
       {
@@ -145,7 +129,7 @@ export const WORKSPACE_PROJECTS = [
           {
             label: 'desc',
             value:
-              'COSC2673 ML at RMIT: full pipeline on CRCHistoPhenotypes patches — EDA, class imbalance, improved recall for cancerous class, semi-supervised boost for minority cell types. Co-authored with Labiba Nawar.',
+              'COSC2673 ML at RMIT: full pipeline on CRCHistoPhenotypes patches. EDA, class imbalance, improved recall for cancerous class, semi-supervised boost for minority cell types. Co-authored with Labiba Nawar.',
             color: '#d4d4d8',
             isText: true,
           },
@@ -160,7 +144,7 @@ export const WORKSPACE_PROJECTS = [
     statusColor: '#fcd34d',
     githubUrl: 'https://github.com/kannanarora5/sales-powerbi-dashboard',
     githubLabel: 'github.com/kannanarora5/sales-powerbi-dashboard',
-    desc: 'Interactive Power BI dashboard for Superstore sales — KPIs, trends, and category profitability.',
+    desc: 'Interactive Power BI dashboard for Superstore sales: KPIs, trends, and category profitability.',
     tags: ['Power BI', 'Python', 'SQL', 'Data viz'],
     files: [
       {
@@ -196,7 +180,7 @@ export const WORKSPACE_PROJECTS = [
     statusColor: '#c4b5fd',
     githubUrl: 'https://github.com/LabibaNawar/Social-media-and-network-analysis',
     githubLabel: 'github.com/LabibaNawar/Social-media-and-network-analysis',
-    desc: 'Large-scale Reddit & YouTube analysis of UK transgender rights discourse — sentiment, LDA topics, network centrality.',
+    desc: 'Large-scale Reddit & YouTube analysis of UK transgender rights discourse: sentiment, LDA topics, network centrality.',
     tags: ['Python', 'NLP', 'NetworkX', 'VADER', 'LDA'],
     files: [
       {
@@ -232,7 +216,7 @@ export const WORKSPACE_PROJECTS = [
     statusColor: '#67e8f9',
     githubUrl: 'https://github.com/kannanarora5/personal-portfolio',
     githubLabel: 'github.com/kannanarora5/personal-portfolio',
-    desc: 'This site — VS Code-themed React portfolio with tabbed panels and command palette.',
+    desc: 'This site: VS Code-themed React portfolio with tabbed panels and command palette.',
     tags: ['React', 'Vite', 'CSS Modules', 'Vercel'],
     files: [
       {
@@ -263,13 +247,45 @@ export const WORKSPACE_PROJECTS = [
   },
 ]
 
+export const CERTIFICATIONS = [
+  {
+    name: 'AI Pair Programming with GitHub Copilot',
+    issuer: 'LinkedIn Learning',
+    year: 'Jan 2026',
+    url: 'https://www.linkedin.com/learning/certificates/4b68badfd46718b97edd718bdeb18b7e6a32699909bb19e917062481d4011e18',
+  },
+  {
+    name: 'Artificial Intelligence Foundations: Machine Learning',
+    issuer: 'LinkedIn Learning',
+    year: 'Dec 2024',
+    url: 'https://www.linkedin.com/learning/certificates/a257aca353201dca5c0528b606f5ca764702c4ae799421d92d476d6bcea4ab6f',
+  },
+  {
+    name: 'Introduction to Physical Computing',
+    issuer: 'Lancaster University · FutureLearn',
+    year: 'Jun 2022',
+    url: 'https://www.futurelearn.com/certificates/7uimrwn',
+  },
+  {
+    name: 'Digital Skills: Artificial Intelligence',
+    issuer: 'Accenture · FutureLearn',
+    year: 'May 2022',
+    url: 'https://www.futurelearn.com/certificates/bqsg3g6',
+  },
+  {
+    name: 'Python Programming',
+    issuer: 'Digital India · EICT Academies (IITs/NITs)',
+    year: 'Jul 2021',
+  },
+]
+
 export const CAREER_LOG = [
   {
     hash: 'a3f9c2e',
     date: 'Jul 2026',
     type: 'feat',
-    message: 'Graduating CS (Professional) — open to SWE, ML/AI, cloud, data',
-    body: 'Final year at RMIT Melbourne. Interested in hybrid or remote roles across software, ML, and interactive products.',
+    message: 'Finishing CS (Professional) at RMIT',
+    body: 'Final year at RMIT Melbourne. Looking for internship or grad roles, Melbourne or remote.',
     tag: 'milestone',
     tagColor: '#9ece6a',
   },
@@ -277,85 +293,69 @@ export const CAREER_LOG = [
     hash: 'b71d4a1',
     date: '2025',
     type: 'feat',
-    message: 'Apple Foundation Program — Stridey iOS team',
-    body: 'Selected for RMIT’s Apple Foundation cohort. Built Stridey with SwiftUI: nature quests, step tracking, and a user-research-driven pitch.',
-    tag: 'mobile',
+    message: 'Apple Foundation Program, Stridey iOS',
+    body: 'SwiftUI app for nature reconnection; human-centred design, user research, and team pitch.',
+    tag: 'program',
     tagColor: '#bb9af7',
   },
   {
     hash: 'b93e1d4',
-    date: '2025',
+    date: 'Feb 2025',
     type: 'feat',
-    message: 'Peer Mentor @ RMIT — Java & C++ support',
-    body: 'Mentored 20+ students through coursework, labs, and problem-solving in one-on-one and group sessions.',
+    message: 'Peer Mentor @ RMIT',
+    body: 'Mentoring 20+ students in Java and C++. Diagnose issues, explain clearly, follow through to resolution.',
     tag: 'leadership',
     tagColor: '#73daca',
   },
   {
-    hash: 'c29f813',
-    date: '2025',
-    type: 'feat',
-    message: 'Customer Service @ Marvel Stadium',
-    body: 'Front-line support for 1,000+ attendees per event — calm decisions under pressure and high-volume communication.',
-    tag: 'work',
-    tagColor: '#7dcfff',
-  },
-  {
-    hash: 'd84c6b2',
+    hash: 'f03b2c9',
     date: '2024',
-    type: 'feat',
-    message: 'FIRE+ committee — student media & outreach',
-    body: 'Created content reaching 1,000+ students for RMIT’s social media portfolio.',
-    tag: 'community',
+    type: 'chore',
+    message: 'FIRE+ committee & CSIT Club',
+    body: 'Content and events for 1,000+ students (FIRE+); coding workshops and hackathons (CSIT).',
+    tag: 'extracurricular',
     tagColor: '#bac730',
   },
   {
     hash: 'e15a9d7',
     date: '2023',
     type: 'init',
-    message: 'Started CS (Professional) @ RMIT',
-    body: 'Hackathons, societies, mentoring programs, and hands-on projects alongside coursework.',
-    tag: 'origin',
+    message: 'Started Bachelor of CS (Professional) @ RMIT',
+    body: 'Lectures and labs, group assignments, hackathons, peer mentoring, and committee work with student clubs. A lot more than sitting in class.',
+    tag: 'education',
     tagColor: '#7aa2f7',
   },
   {
-    hash: 'f03b2c9',
-    date: '2022',
-    type: 'feat',
-    message: "World Scholar's Cup · exchange in Scotland",
-    body: 'Global rounds, international exchange at Kilgraston School, and early foundations in debate and performance.',
-    tag: 'school',
-    tagColor: '#bb9af7',
+    hash: '8f4a7b1',
+    date: '2019–20',
+    type: 'chore',
+    message: "High school awards: chess, World Scholar's Cup, Scotland exchange",
+    body: 'State-level chess champion (2019); World Scholar\'s Cup global rounds (2020); exchange at Kilgraston School, Scotland.',
+    tag: 'awards',
+    tagColor: '#52525b',
   },
 ]
 
 export const TIMELINE = [
   {
-    title: 'CS (Professional) Student',
+    title: 'Bachelor of CS (Professional)',
     org: 'RMIT University · Melbourne',
-    desc: 'Coursework across software engineering, cloud, ML, and data — plus side work in mobile, analytics, and game prototypes.',
-    date: '2022\nPresent',
+    desc: 'Coursework, group work, hackathons, peer mentoring, and student committee roles alongside the degree.',
+    date: '2023\nJul 2026',
     hasLine: true,
   },
   {
-    title: 'Customer Service Representative',
-    org: 'Marvel Stadium · Melbourne',
-    desc: 'Front-line support for 1,000+ attendees. Fast decisions, high volume.',
-    date: 'May 2025\nPresent',
+    title: 'Peer Mentor',
+    org: 'RMIT University',
+    desc: 'Technical mentoring for 20+ students: Java & C++ debugging, clear explanations, end-to-end follow-up.',
+    date: 'Feb 2025\nPresent',
     hasLine: true,
   },
   {
     title: 'Committee Member, FIRE+',
     org: 'RMIT Social Media Portfolio',
-    desc: 'Created content reaching 1,000+ students.',
+    desc: 'Digital content, club events, and online presence reaching 1,000+ students.',
     date: '2024\nPresent',
-    hasLine: true,
-  },
-  {
-    title: "World Scholar's Cup",
-    org: 'Global Participant',
-    desc: 'International competition and exchange at Kilgraston School, Scotland.',
-    date: '2022',
     hasLine: false,
   },
 ]

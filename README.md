@@ -1,6 +1,6 @@
 # kannan-portfolio
 
-Personal portfolio — VS Code-themed React app.
+Personal portfolio, VS Code-themed React app.
 
 Built with Vite + React. Deployed on Vercel.
 
@@ -19,4 +19,4 @@ npm run build
 
 ## Deploy
 
-Connected to Vercel — pushes to `main` auto-deploy.
+Connected to Vercel; pushes to `main` auto-deploy.

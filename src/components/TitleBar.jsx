@@ -9,7 +9,7 @@ export default function TitleBar() {
         <div className={styles.dot} style={{ background: '#ffbd2e' }} />
         <div className={styles.dot} style={{ background: '#28ca40' }} />
       </div>
-      <span className={styles.name}>kannan-portfolio — VS Code</span>
+      <span className={styles.name}>kannan-portfolio · VS Code</span>
     </div>
   )
 }

@@ -54,6 +54,10 @@
   margin-bottom: 10px;
   font-family: var(--font-mono);
 }
+.readmeRole strong {
+  color: var(--text-bright);
+  font-weight: 600;
+}
 .readmePitch {
   font-size: 15px;
   color: var(--text);
@@ -286,18 +290,19 @@
   font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-dim);
+  color: var(--text-bright);
   padding: 10px 24px;
-  border-radius: 4px;
+  border-radius: 6px;
   text-decoration: none;
-  border: 1px solid var(--border-l);
-  background: transparent;
+  border: 1px solid #52525b;
+  background: #1a1a1c;
   cursor: pointer;
-  transition: border-color .2s, color .2s;
+  transition: border-color .2s, color .2s, background .2s;
 }
 .btnGhost:hover {
-  border-color: var(--text-dim);
-  color: var(--text-bright);
+  border-color: #71717a;
+  color: var(--text-white);
+  background: var(--bg-hover);
 }
 .constBlock {
   background: #111113;
@@ -347,7 +352,7 @@
   max-width: 640px;
 }
 .aboutPitch strong {
-  color: var(--text-bright);
+  color: #4ec9b0;
   font-weight: 500;
 }
 .aboutPanel .highlightGrid {
@@ -407,56 +412,6 @@
   border: 1px solid rgba(103, 232, 249, .2);
   color: var(--accent);
 }
-.readmeFocusBlock {
-  margin-bottom: 28px;
-  padding: 18px 22px;
-  background: #111113;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-}
-.readmeFocusLabel {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 14px;
-}
-.readmeFocusList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.readmeFocusItem {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 10px 14px;
-  line-height: 1.5;
-}
-.readmeFocusTag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--accent);
-  padding: 3px 10px;
-  background: rgba(103, 232, 249, .08);
-  border: 1px solid rgba(103, 232, 249, .2);
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-.readmeFocusText {
-  font-size: 13px;
-  color: var(--text-dim);
-  font-weight: 300;
-  flex: 1;
-  min-width: 200px;
-}
 .aboutCuriosityList {
   list-style: none;
   margin: 0;
@@ -480,9 +435,8 @@
   display: block;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-bright);
   margin-bottom: 6px;
-  font-family: var(--font-ui);
+  font-family: var(--font-mono);
 }
 .aboutCuriosityNote {
   margin: 0;
@@ -490,6 +444,74 @@
   color: var(--text-dim);
   line-height: 1.65;
   font-weight: 300;
+}
+.aboutLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.aboutLink:hover {
+  color: var(--accent-l);
+  text-decoration: underline;
+}
+.aboutPitch .aboutLink {
+  font-family: inherit;
+  font-size: inherit;
+  color: #4ec9b0;
+}
+.aboutPitch .aboutLink:hover {
+  color: #67e8f9;
+}
+.certGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.certCard {
+  padding: 14px 16px;
+  background: #111113;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.certCardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .15s, background .15s;
+}
+.certCardLink:hover {
+  border-color: var(--border-l);
+  background: var(--bg-hover);
+}
+.certCardLink:hover .certVerify {
+  color: var(--accent-l);
+}
+.certName {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ce9178;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.certMeta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.certIssuer {
+  color: #9cdcfe;
+}
+.certYear {
+  color: #b5cea8;
+}
+.certVerify {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
 }
 
 /* timeline */
@@ -523,13 +545,28 @@
   margin-top: 6px;
 }
 .tlBody { flex: 1; }
-.tlTitle { font-size: 14px; font-weight: 600; color: var(--text-bright); margin-bottom: 2px; }
-.tlOrg { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); margin-bottom: 5px; }
-.tlDesc { font-size: 13px; color: var(--text); font-weight: 300; line-height: 1.6; }
+.tlTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4ec9b0;
+  margin-bottom: 2px;
+}
+.tlOrg {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #ce9178;
+  margin-bottom: 5px;
+}
+.tlDesc {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.6;
+}
 .tlDate {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--text-dim);
+  color: #b5cea8;
   white-space: pre;
   text-align: right;
   line-height: 1.35;
@@ -852,7 +889,7 @@
 .jComma  { color: var(--text-dim); }
 
 /* ── CONTACT panel ── */
-.contactPanel { padding: 40px 56px; }
+.contactPanel { padding: 40px 56px; max-width: 760px; }
 .shBlock {
   background: #111113;
   border: 1px solid var(--border);
@@ -889,18 +926,17 @@
 }
 .shLink:hover { background: var(--bg-hover); }
 .shLinkIcon {
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  background: rgba(103,232,249,.1);
-  border: 1px solid rgba(103,232,249,.2);
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
   flex-shrink: 0;
 }
-.shLinkLabel { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); }
+.shLinkLabel { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--text); }
 .shLinkValue { font-size: 14px; color: var(--text-bright); margin-top: 1px; }
 .shLinkArrow { margin-left: auto; color: var(--accent); font-size: 16px; }
 .availBar {
@@ -953,8 +989,8 @@
 .commitRow.commitExpanded { background: var(--bg-selected); }
 .commitMain {
   display: grid;
-  grid-template-columns: 56px 44px minmax(0, 1fr) auto 20px;
-  gap: 8px 12px;
+  grid-template-columns: 56px 52px 42px minmax(0, 1fr) auto;
+  gap: 8px 10px;
   align-items: center;
 }
 .commitHash { color: var(--yellow); font-size: 12px; flex-shrink: 0; opacity: .8; }
@@ -963,18 +999,30 @@
   font-size: 11px;
   font-weight: 600;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 .commitType {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 .commitMsg {
   color: var(--text-bright);
   font-size: 13px;
   min-width: 0;
   line-height: 1.45;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.commitEnd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  justify-self: end;
 }
 .commitTag {
   font-size: 10px;
@@ -983,13 +1031,14 @@
   border: 1px solid;
   flex-shrink: 0;
   letter-spacing: .05em;
-  justify-self: end;
+  white-space: nowrap;
 }
 .commitChevron {
   color: var(--text-dim);
   font-size: 11px;
   flex-shrink: 0;
-  justify-self: end;
+  width: 12px;
+  text-align: center;
 }
 .commitBody {
   margin-top: 12px;
@@ -1061,6 +1110,9 @@
     align-items: flex-start;
     gap: 4px;
   }
+  .certGrid {
+    grid-template-columns: 1fr;
+  }
   .tlItem {
     grid-template-columns: 20px 1fr;
   }
@@ -1079,6 +1131,13 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+  }
+  .commitMsg {
+    white-space: normal;
+    padding-right: 20px;
+  }
+  .commitEnd {
+    justify-content: flex-start;
   }
   .commitChevron {
     position: absolute;
