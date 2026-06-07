@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { FILES } from './data.js'
 import TitleBar from './components/TitleBar.jsx'
 import ActivityBar from './components/ActivityBar.jsx'
@@ -15,8 +15,24 @@ import styles from './App.module.css'
 
 const MOBILE_MQ = '(max-width: 720px)'
 
+function hashToTab(hash) {
+  const raw = (hash || '').replace(/^#/, '')
+  if (!raw || raw === 'readme') return 'readme'
+  return FILES.find((f) => f.id === raw)?.id ?? 'readme'
+}
+
+function tabToUrl(id) {
+  const base = `${window.location.pathname}${window.location.search}`
+  return id === 'readme' ? base : `${base}#${id}`
+}
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState('readme')
+  const editorScrollRef = useRef(null)
+  const isMobileRef = useRef(false)
+
+  const [activeTab, setActiveTab] = useState(() =>
+    typeof window !== 'undefined' ? hashToTab(window.location.hash) : 'readme',
+  )
   const [openTabs, setOpenTabs] = useState(['readme', 'about', 'projects', 'skills', 'contact'])
   const [cmdOpen, setCmdOpen] = useState(false)
   const [sidebarVisible, setSidebarVisible] = useState(
@@ -25,6 +41,31 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.matchMedia(MOBILE_MQ).matches,
   )
+
+  const scrollEditorToTop = useCallback(() => {
+    editorScrollRef.current?.scrollTo(0, 0)
+  }, [])
+
+  const setTab = useCallback((id, { recordHistory = false } = {}) => {
+    if (!FILES.some((f) => f.id === id)) return
+
+    setOpenTabs((prev) => (prev.includes(id) ? prev : [...prev, id]))
+    setActiveTab(id)
+    if (isMobileRef.current) setSidebarVisible(false)
+
+    const url = tabToUrl(id)
+    if (recordHistory) {
+      history.pushState({ tab: id }, '', url)
+    } else {
+      history.replaceState({ tab: id }, '', url)
+    }
+
+    requestAnimationFrame(scrollEditorToTop)
+  }, [scrollEditorToTop])
+
+  useEffect(() => {
+    isMobileRef.current = isMobile
+  }, [isMobile])
 
   useEffect(() => {
     const mq = window.matchMedia(MOBILE_MQ)
@@ -38,19 +79,39 @@ export default function App() {
     return () => mq.removeEventListener('change', onChange)
   }, [])
 
+  useEffect(() => {
+    const initial = hashToTab(window.location.hash)
+    history.replaceState({ tab: initial }, '', tabToUrl(initial))
+    setActiveTab(initial)
+    requestAnimationFrame(scrollEditorToTop)
+
+    const onPopState = (e) => {
+      const tab = e.state?.tab ?? hashToTab(window.location.hash)
+      setOpenTabs((prev) => (prev.includes(tab) ? prev : [...prev, tab]))
+      setActiveTab(tab)
+      if (isMobileRef.current) setSidebarVisible(false)
+      requestAnimationFrame(scrollEditorToTop)
+    }
+
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [scrollEditorToTop])
+
   function switchTab(id) {
-    if (!openTabs.includes(id)) setOpenTabs(prev => [...prev, id])
-    setActiveTab(id)
-    if (isMobile) setSidebarVisible(false)
+    if (id === activeTab) {
+      scrollEditorToTop()
+      return
+    }
+    setTab(id, { recordHistory: true })
   }
 
   function closeTab(id) {
-    const remaining = openTabs.filter(t => t !== id)
+    const remaining = openTabs.filter((t) => t !== id)
     setOpenTabs(remaining)
     if (activeTab === id) {
       const idx = openTabs.indexOf(id)
       const next = remaining[Math.min(idx, remaining.length - 1)]
-      if (next) setActiveTab(next)
+      if (next) setTab(next, { recordHistory: true })
     }
   }
 
@@ -103,7 +164,7 @@ export default function App() {
             <span className={styles.crumbActive}>{activeFile?.name}</span>
           </div>
 
-          <div className={styles.editorScroll}>
+          <div className={styles.editorScroll} ref={editorScrollRef}>
             {activeTab === 'readme' && (
               <div style={{ animation: 'fadeIn .15s ease' }}>
                 <ReadmePanel onSwitch={switchTab} />
