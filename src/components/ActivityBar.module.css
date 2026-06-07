@@ -34,3 +34,15 @@
   border-radius: 1px;
 }
 .settings { margin-top: auto; }
+
+@media (max-width: 720px) {
+  .activitybarMobile {
+    width: 44px;
+    padding: 6px 0;
+  }
+  .activitybarMobile .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}

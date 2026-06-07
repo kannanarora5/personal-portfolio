@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { FILES } from '../data.js'
 import styles from './Sidebar.module.css'
 
-export default function Sidebar({ activeTab, onSwitch, visible = true }) {
+export default function Sidebar({ activeTab, onSwitch, visible = true, isMobile = false }) {
   const [sectionOpen, setSectionOpen] = useState(true)
 
   return (
-    <div className={`${styles.sidebar} ${visible ? styles.open : styles.hidden} ${!sectionOpen ? styles.collapsed : ''}`}>
+    <div className={`${styles.sidebar} ${visible ? styles.open : styles.hidden} ${!sectionOpen ? styles.collapsed : ''} ${isMobile ? styles.sidebarMobile : ''}`}>
       <div className={styles.header}>Explorer</div>
 
       <div className={styles.section} onClick={() => setSectionOpen(s => !s)} role="button" tabIndex={0}>

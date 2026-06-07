@@ -48,3 +48,25 @@
 }
 .tab:hover .close,
 .tab.active .close { opacity: 1; }
+
+@media (max-width: 720px) {
+  .tabs {
+    height: 40px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    height: 40px;
+    min-height: 44px;
+    padding: 0 14px;
+    gap: 6px;
+  }
+  .name { font-size: 12px; }
+  .close {
+    opacity: 1;
+    min-width: 28px;
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

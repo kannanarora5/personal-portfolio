@@ -19,6 +19,39 @@ export default function ProjectsPanel() {
     <div className={styles.projectsPanel}>
       <div className={styles.panelTitle}>projects.tsx</div>
 
+      <div className={styles.projectsMobileBar}>
+        {WORKSPACE_PROJECTS.map((p) => (
+          <button
+            key={p.id}
+            type="button"
+            className={`${styles.projectChip} ${activeProject === p.id ? styles.projectChipActive : ''}`}
+            onClick={() => selectProject(p.id)}
+          >
+            <span className={styles.projectChipDot} style={{ background: p.statusColor }} />
+            <span className={styles.projectChipName}>{p.folder}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.projectsMobileFiles}>
+        {project?.files.map((f) => (
+          <button
+            key={f.name}
+            type="button"
+            className={`${styles.fileChip} ${activeFile === f.name ? styles.fileChipActive : ''}`}
+            onClick={() => setActiveFile(f.name)}
+          >
+            <span
+              className={styles.fileChipIcon}
+              style={{ color: f.iconColor, background: `${f.iconColor}18` }}
+            >
+              {f.icon}
+            </span>
+            {f.name}
+          </button>
+        ))}
+      </div>
+
       <div className={styles.projectsWorkspace}>
         <div className={styles.projectsExplorer}>
           <div className={styles.explorerHeader}>

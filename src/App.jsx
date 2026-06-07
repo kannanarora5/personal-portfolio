@@ -13,15 +13,35 @@ import SkillsPanel from './components/SkillsPanel.jsx'
 import ContactPanel from './components/ContactPanel.jsx'
 import styles from './App.module.css'
 
+const MOBILE_MQ = '(max-width: 720px)'
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('readme')
   const [openTabs, setOpenTabs] = useState(['readme', 'about', 'projects', 'skills', 'contact'])
   const [cmdOpen, setCmdOpen] = useState(false)
-  const [sidebarVisible, setSidebarVisible] = useState(true)
+  const [sidebarVisible, setSidebarVisible] = useState(
+    () => typeof window !== 'undefined' && !window.matchMedia(MOBILE_MQ).matches,
+  )
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(MOBILE_MQ).matches,
+  )
+
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_MQ)
+    const onChange = () => {
+      const mobile = mq.matches
+      setIsMobile(mobile)
+      if (mobile) setSidebarVisible(false)
+    }
+    onChange()
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
   function switchTab(id) {
     if (!openTabs.includes(id)) setOpenTabs(prev => [...prev, id])
     setActiveTab(id)
+    if (isMobile) setSidebarVisible(false)
   }
 
   function closeTab(id) {
@@ -57,8 +77,20 @@ export default function App() {
       <TitleBar />
 
       <div className={styles.workspace}>
-        <ActivityBar onToggle={() => setSidebarVisible(v => !v)} sidebarVisible={sidebarVisible} />
-        <Sidebar activeTab={activeTab} onSwitch={switchTab} visible={sidebarVisible} />
+        {isMobile && sidebarVisible && (
+          <button
+            type="button"
+            className={styles.sidebarBackdrop}
+            aria-label="Close explorer"
+            onClick={() => setSidebarVisible(false)}
+          />
+        )}
+        <ActivityBar
+          onToggle={() => setSidebarVisible(v => !v)}
+          sidebarVisible={sidebarVisible}
+          isMobile={isMobile}
+        />
+        <Sidebar activeTab={activeTab} onSwitch={switchTab} visible={sidebarVisible} isMobile={isMobile} />
 
         <div className={styles.editorArea}>
           <TabBar activeTab={activeTab} onSwitch={switchTab} openTabs={openTabs} onClose={closeTab} />

@@ -576,6 +576,11 @@
 /* ── PROJECTS panel ── */
 .projectsPanel { padding: 40px 56px; }
 
+.projectsMobileBar,
+.projectsMobileFiles {
+  display: none;
+}
+
 .projectsWorkspace {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -854,19 +859,6 @@
   font-weight: 300;
 }
 
-@media (max-width: 768px) {
-  .projectsPanel { padding: 24px 16px; }
-  .projectsWorkspace {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .projectsExplorer {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    max-height: 240px;
-  }
-  .previewBody { padding: 16px; }
-}
 
 /* ── SKILLS panel ── */
 .skillsPanel { padding: 40px 56px; }
@@ -937,7 +929,16 @@
   flex-shrink: 0;
 }
 .shLinkLabel { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--text); }
-.shLinkValue { font-size: 14px; color: var(--text-bright); margin-top: 1px; }
+.shLinkValue {
+  font-size: 14px;
+  color: var(--text-bright);
+  margin-top: 1px;
+  word-break: break-word;
+}
+.shLink > div:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+}
 .shLinkArrow { margin-left: auto; color: var(--accent); font-size: 16px; }
 .availBar {
   background: rgba(103,232,249,.06);
@@ -1073,58 +1074,198 @@
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .readmePanel { padding: 28px 20px 48px; }
-  .readmeHero {
-    padding: 20px;
+@media (max-width: 720px) {
+  .panelTitle {
+    font-size: 11px;
+    margin-bottom: 20px;
   }
+
+  .readmePanel { padding: 20px 16px 40px; }
+  .readmeHero { padding: 16px; margin-bottom: 24px; }
   .readmeHeroRow {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 16px;
   }
-  .readmePortrait {
-    width: 96px;
-    height: 96px;
+  .readmePortrait { width: 88px; height: 88px; }
+  .readmeHero .status { margin-bottom: 12px; font-size: 11px; }
+  .readmePanel .h1 { font-size: clamp(26px, 9vw, 40px); }
+  .readmeRole { font-size: 13px; }
+  .readmePitch { font-size: 14px; max-width: none; }
+  .readmeCtaRow {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
   }
   .readmeCtaRow .btnPrimary,
   .readmeCtaRow .btnGhost {
-    flex: 1;
-    min-width: 120px;
+    width: 100%;
+    min-height: 44px;
     text-align: center;
+    justify-content: center;
   }
-  .readmeFileGrid {
-    grid-template-columns: 1fr;
-  }
+  .readmeFileGrid { grid-template-columns: 1fr; gap: 8px; }
+  .readmeFileCard { min-height: 52px; padding: 12px 14px; }
   .readmeFileArrow { opacity: 1; }
-  .aboutPanel, .projectsPanel, .skillsPanel, .contactPanel { padding: 20px; }
-  .readmePanel .h1 { font-size: clamp(28px, 8vw, 44px); }
-  .constBlock, .jsonView, .shBlock { max-width: 100%; padding: 14px; }
-  .mlLabel { display: none; }
-  .timeline .tlItem { padding: 12px 0; }
-  .btns { gap: 8px; }
-  .aboutPanel { padding: 24px 16px 40px; }
-  .aboutPitch { font-size: 15px; }
+
+  .aboutPanel { padding: 20px 16px 36px; }
+  .aboutPitch { font-size: 14px; max-width: none; }
   .aboutBlockHead {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
   }
-  .certGrid {
-    grid-template-columns: 1fr;
-  }
-  .tlItem {
-    grid-template-columns: 20px 1fr;
-  }
+  .aboutCuriosityItem { padding: 14px 16px; }
+  .aboutCuriosityTopic { font-size: 13px; }
+  .aboutCuriosityNote { font-size: 12px; }
+  .certGrid { grid-template-columns: 1fr; }
+  .timeline .tlItem { padding: 12px 0; }
+  .tlItem { grid-template-columns: 20px 1fr; gap: 8px 12px; }
   .tlDate {
     grid-column: 2;
     text-align: left;
-    margin-top: -8px;
+    margin-top: -4px;
     padding-bottom: 4px;
+    white-space: normal;
+  }
+  .tlTitle { font-size: 13px; }
+  .tlDesc { font-size: 12px; }
+
+  .projectsPanel { padding: 20px 16px 24px; }
+
+  .projectsMobileBar,
+  .projectsMobileFiles {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 10px;
+    padding-bottom: 2px;
+  }
+  .projectsMobileBar::-webkit-scrollbar,
+  .projectsMobileFiles::-webkit-scrollbar { display: none; }
+
+  .projectChip,
+  .fileChip {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    min-height: 40px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: #111113;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color .15s, background .15s, color .15s;
+  }
+  .projectChipActive,
+  .fileChipActive {
+    border-color: rgba(103, 232, 249, .45);
+    background: rgba(103, 232, 249, .08);
+    color: var(--text-bright);
+  }
+  .projectChipDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .projectChipName { white-space: nowrap; }
+  .fileChipIcon {
+    font-size: 9px;
+    font-weight: 700;
+    width: 20px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .projectsMobileFiles { margin-bottom: 12px; }
+
+  .projectsWorkspace {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    border-radius: 6px;
+  }
+  .projectsExplorer { display: none; }
+  .previewTabBar,
+  .previewBreadcrumb { display: none; }
+  .projectsPreview { min-height: 0; }
+  .previewBody {
+    padding: 16px;
+    min-height: 200px;
+  }
+  .previewBlock { padding: 14px; }
+  .previewKvLine {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding: 8px 0;
+  }
+  .previewKvKey { min-width: 0; flex: 0 0 auto; }
+  .previewKvLine > span:last-child {
+    flex: 1 1 100%;
+    word-break: break-word;
+    font-size: 12px !important;
+  }
+  .previewLineNum { width: 20px; }
+  .readmePreview { max-width: none; }
+  .readmePreviewTitle { font-size: 17px; margin-bottom: 12px; }
+  .readmePreview p { font-size: 13px; line-height: 1.65; }
+  .previewTagRow { flex-wrap: wrap; gap: 6px; }
+  .previewFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  .previewGithub {
+    word-break: break-all;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .skillsPanel { padding: 20px 16px; }
+  .jsonView {
+    max-width: 100%;
+    padding: 16px;
+    font-size: 12px;
+    line-height: 1.75;
+  }
+
+  .contactPanel { padding: 20px 16px; }
+  .shBlock { max-width: 100%; }
+  .shBody { padding: 16px; font-size: 12px; }
+  .shLink {
+    padding: 14px 16px;
+    min-height: 56px;
+    align-items: flex-start;
+  }
+  .shLinkValue { font-size: 13px; }
+  .availBar {
+    font-size: 11px;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .constBlock, .jsonView, .shBlock { max-width: 100%; }
+  .mlLabel { display: none; }
+  .btns { gap: 8px; flex-wrap: wrap; }
+
+  .gitLogHeader {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 16px;
   }
   .commitRow {
     position: relative;
-    padding-right: 40px;
+    padding: 12px 44px 12px 16px;
   }
   .commitMain {
     display: flex;
@@ -1132,16 +1273,39 @@
     align-items: flex-start;
     gap: 6px;
   }
+  .commitHash,
+  .commitDate,
+  .commitType { font-size: 11px; }
   .commitMsg {
     white-space: normal;
-    padding-right: 20px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding-right: 0;
   }
   .commitEnd {
+    width: 100%;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
   }
+  .commitTag { font-size: 9px; }
   .commitChevron {
     position: absolute;
     top: 14px;
-    right: 20px;
+    right: 16px;
+    min-width: 32px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
+  .commitBody { margin-top: 8px; }
+  .commitBody p { font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  .readmePanel { padding: 16px 12px 32px; }
+  .aboutPanel, .projectsPanel, .skillsPanel, .contactPanel { padding: 16px 12px; }
+  .readmeCtaRow .btnPrimary,
+  .readmeCtaRow .btnGhost { font-size: 12px; padding: 12px 16px; }
 }
