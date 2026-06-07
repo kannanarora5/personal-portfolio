@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { FILES } from './data.js'
 import TitleBar from './components/TitleBar.jsx'
 import ActivityBar from './components/ActivityBar.jsx'
@@ -201,6 +202,8 @@ export default function App() {
         onClose={() => setCmdOpen(false)}
         onSwitch={(id) => { switchTab(id); setCmdOpen(false) }}
       />
+
+      <Analytics />
     </>
   )
 }
